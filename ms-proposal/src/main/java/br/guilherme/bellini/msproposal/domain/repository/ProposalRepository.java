@@ -1,6 +1,6 @@
-package br.guilherme.bellini.msproposal.repository;
+package br.guilherme.bellini.msproposal.domain.repository;
 
-import br.guilherme.bellini.msproposal.entity.Proposal;
+import br.guilherme.bellini.msproposal.domain.entity.Proposal;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

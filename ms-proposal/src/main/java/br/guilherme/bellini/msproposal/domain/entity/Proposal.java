@@ -1,4 +1,4 @@
-package br.guilherme.bellini.msproposal.entity;
+package br.guilherme.bellini.msproposal.domain.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
