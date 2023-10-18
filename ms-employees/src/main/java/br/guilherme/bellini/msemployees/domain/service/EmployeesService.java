@@ -1,8 +1,8 @@
 package br.guilherme.bellini.msemployees.domain.service;
 
+import br.guilherme.bellini.msemployees.exception.BusinessException;
 import br.guilherme.bellini.msemployees.domain.entity.Employees;
 import br.guilherme.bellini.msemployees.domain.repository.EmployeesRepository;
-import br.guilherme.bellini.msemployees.exception.BusinessException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,6 +12,7 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class EmployeesService {
+
 
     private final EmployeesRepository repository;
 
@@ -23,10 +24,13 @@ public class EmployeesService {
         if(!cpfValid){
             throw new BusinessException("cpf invalid!");
         }
+
         return repository.save(employees);
-    }
+}
+
 
     public Optional<Employees> getByCpf(String cpf){
         return repository.findByCpf(cpf);
     }
+
 }

@@ -1,5 +1,4 @@
 package br.guilherme.bellini.msemployees.api.controller;
-
 import br.guilherme.bellini.msemployees.api.mapper.EmployeesMapper;
 import br.guilherme.bellini.msemployees.api.request.EmployeesRequest;
 import br.guilherme.bellini.msemployees.api.response.EmployeesResponse;
@@ -15,13 +14,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/employees")
+@RequestMapping(value = "/employees")
 @RequiredArgsConstructor
 @Slf4j
 public class EmployeesController {
 
     private final EmployeesService service;
-
     private final EmployeesMapper mapper;
 
     @PostMapping
@@ -35,7 +33,7 @@ public class EmployeesController {
     @GetMapping("{cpf}")
     public ResponseEntity<EmployeesResponse> FindByCpf(@PathVariable("cpf") String cpf){
         Optional<Employees> optEmployees = service.getByCpf(cpf);
-        if ((optEmployees.isEmpty())){
+        if(optEmployees.isEmpty()){
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.status(HttpStatus.OK).body(mapper.toEmployeesResponse(optEmployees.get()));
