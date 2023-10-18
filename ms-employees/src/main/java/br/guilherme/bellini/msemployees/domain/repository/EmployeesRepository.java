@@ -1,4 +1,4 @@
-package br.guilherme.bellini.msemployees.domain.entity.repository;
+package br.guilherme.bellini.msemployees.domain.repository;
 
 import br.guilherme.bellini.msemployees.domain.entity.Employees;
 import org.springframework.data.jpa.repository.JpaRepository;
