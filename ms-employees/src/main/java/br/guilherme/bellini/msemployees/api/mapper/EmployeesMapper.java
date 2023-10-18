@@ -1,6 +1,6 @@
-package br.guilherme.bellini.msemployees.api.response.mapper;
+package br.guilherme.bellini.msemployees.api.mapper;
+import br.guilherme.bellini.msemployees.api.request.EmployeesRequest;
 import br.guilherme.bellini.msemployees.api.response.EmployeesResponse;
-import br.guilherme.bellini.msemployees.api.response.request.EmployeesRequest;
 import br.guilherme.bellini.msemployees.domain.entity.Employees;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
