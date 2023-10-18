@@ -1,4 +1,4 @@
-package br.guilherme.bellini.msproposal;
+package br.guilherme.bellini.msproposal.api.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

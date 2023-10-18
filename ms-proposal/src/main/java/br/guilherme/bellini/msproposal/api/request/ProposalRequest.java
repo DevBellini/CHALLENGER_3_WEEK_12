@@ -1,0 +1,16 @@
+package br.guilherme.bellini.msproposal.api.request;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.validation.constraints.NotBlank;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class ProposalRequest {
+
+    @NotBlank(message = "proposal is required")
+    private String proposal;
+}
