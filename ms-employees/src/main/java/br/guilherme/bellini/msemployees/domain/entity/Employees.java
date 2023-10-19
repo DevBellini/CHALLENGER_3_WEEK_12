@@ -21,13 +21,13 @@ public class Employees {
     private String cpf;
 
     @Column
-    private Integer idade;
+    private Integer age;
 
-    public Employees(Long id, String name, String cpf, Integer idade) {
+    public Employees(Long id, String name, String cpf, Integer age) {
         this.id = id;
         this.name = name;
         this.cpf = cpf;
-        this.idade = idade;
+        this.age = age;
     }
 
     @Override
