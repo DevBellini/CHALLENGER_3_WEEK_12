@@ -19,6 +19,9 @@ public class ProposalService {
 
     @Transactional
     public Proposal save(Proposal proposal){
+        if (proposal.getProposal().trim().isEmpty()) {
+            throw new BusinessException("proposal cannot be nully!");
+        }
         return repository.save(proposal);
     }
 
