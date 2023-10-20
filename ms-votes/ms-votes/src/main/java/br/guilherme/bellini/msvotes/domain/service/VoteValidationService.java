@@ -58,4 +58,37 @@ public class VoteValidationService {
         return votes;
     }
 
+    public int countApprovedVotes(Long proposalId) {
+        List<Vote> votes = voteRepository.findByProposalId(proposalId);
+        int count = 0;
+        for (Vote vote : votes) {
+            if (vote.getStatus() == Status.APPROVE) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public int countRejectedVotes(Long proposalId) {
+        List<Vote> votes = voteRepository.findByProposalId(proposalId);
+        int count = 0;
+        for (Vote vote : votes) {
+            if (vote.getStatus() == Status.REJECT) {
+                count++;
+            }
+        }
+        return count;
+    }
+    public Status getMajorityVoteStatus(Long proposalId) {
+        int approvedCount = countApprovedVotes(proposalId);
+        int rejectedCount = countRejectedVotes(proposalId);
+
+        if (approvedCount > rejectedCount) {
+            return Status.APPROVE;
+        } else {
+            return Status.REJECT;
+        }
+    }
+
 }
+

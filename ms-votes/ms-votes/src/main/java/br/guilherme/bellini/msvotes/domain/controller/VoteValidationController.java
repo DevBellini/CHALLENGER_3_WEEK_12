@@ -3,6 +3,7 @@ package br.guilherme.bellini.msvotes.domain.controller;
 import br.guilherme.bellini.msvotes.domain.entity.StatusRequest;
 import br.guilherme.bellini.msvotes.domain.entity.Vote;
 import br.guilherme.bellini.msvotes.domain.enums.Erole;
+import br.guilherme.bellini.msvotes.domain.enums.Status;
 import br.guilherme.bellini.msvotes.domain.service.VoteValidationService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -29,10 +30,17 @@ public class VoteValidationController {
         return ResponseEntity.ok("Successful vote");
     }
 
-    @GetMapping("result-votes")
+    @GetMapping("all-votes")
     public List<Vote> searchAllvote() {
         List<Vote> votes = voteValidationService.searchAllvote();
         return votes;
-
     }
+
+    @GetMapping("result-votes/{proposalId}/majority-vote-status")
+    public ResponseEntity<Status> getMajorityVoteStatus(@PathVariable Long proposalId) {
+        Status majorityVoteStatus = voteValidationService.getMajorityVoteStatus(proposalId);
+        return ResponseEntity.ok(majorityVoteStatus);
+    }
+
+
 }
