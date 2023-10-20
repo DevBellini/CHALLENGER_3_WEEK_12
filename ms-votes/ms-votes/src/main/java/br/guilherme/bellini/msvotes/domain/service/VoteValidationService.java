@@ -37,7 +37,7 @@ public class VoteValidationService {
         Employees employees = employeesFeign.findByCpf(employeesCpf);
 
         if(validateVoto(employees.getCpf()) == Erole.nao_pode_votar){
-            throw new RuntimeException("não pode votar");
+            throw new RuntimeException("Must be above eighteen to vote");
         }
 
         Vote vote = new Vote();

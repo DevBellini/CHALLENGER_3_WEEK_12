@@ -26,7 +26,7 @@ public class VoteValidationController {
     @PostMapping("employees-cpf/{cpf}/proposal/{id}")
     public ResponseEntity<String> vote(@PathVariable("cpf") String cpf, @PathVariable("id") Long id, @RequestBody StatusRequest statusRequest) {
         voteValidationService.vote(cpf, id, statusRequest.getStatus());
-        return ResponseEntity.ok("votesucess");
+        return ResponseEntity.ok("Successful vote");
     }
 
     @GetMapping("result-votes")
