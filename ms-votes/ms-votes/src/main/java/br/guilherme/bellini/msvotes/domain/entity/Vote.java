@@ -16,5 +16,5 @@ public class Vote {
     private Long id;
     private String employeesCpf;
     private Long proposalId;
-    
+
 }
