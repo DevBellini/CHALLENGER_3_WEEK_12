@@ -33,6 +33,12 @@ public class VoteValidationService {
     }
 
     public void vote(String employeesCpf, Long id, Status status) {
+        Vote existingVote = voteRepository.findByEmployeesCpfAndProposalId(employeesCpf, id);
+
+        if (existingVote != null) {
+            throw new RuntimeException("You have already voted on this proposal");
+        }
+
         Proposal proposal = proposalFeign.findById(id);
         Employees employees = employeesFeign.findByCpf(employeesCpf);
 
