@@ -1,13 +1,15 @@
 package br.guilherme.bellini.msvotes.domain.controller;
 
+import br.guilherme.bellini.msvotes.domain.entity.StatusRequest;
+import br.guilherme.bellini.msvotes.domain.entity.Vote;
 import br.guilherme.bellini.msvotes.domain.enums.Erole;
 import br.guilherme.bellini.msvotes.domain.service.VoteValidationService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/vote-validation")
@@ -19,5 +21,18 @@ public class VoteValidationController {
     @GetMapping("employees-cpf/{cpf}")
     public Erole validateVoto(@PathVariable("cpf") String cpf) {
         return voteValidationService.validateVoto(cpf);
+    }
+
+    @PostMapping("employees-cpf/{cpf}/proposal/{id}")
+    public ResponseEntity<String> vote(@PathVariable("cpf") String cpf, @PathVariable("id") Long id, @RequestBody StatusRequest statusRequest) {
+        voteValidationService.vote(cpf, id, statusRequest.getStatus());
+        return ResponseEntity.ok("votesucess");
+    }
+
+    @GetMapping("result-votes")
+    public List<Vote> searchAllvote() {
+        List<Vote> votes = voteValidationService.searchAllvote();
+        return votes;
+
     }
 }
