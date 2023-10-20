@@ -13,6 +13,6 @@ public interface ProposalFeign {
     @GetMapping(value = "{id}")
     Proposal findById(@PathVariable("id") Long id);
 
-    @GetMapping(value = "/proposal")
-    Proposal searchAllProposal(@PathVariable("id") Long id);
+    @GetMapping()
+    public List<Proposal> searchAllProposal();
 }

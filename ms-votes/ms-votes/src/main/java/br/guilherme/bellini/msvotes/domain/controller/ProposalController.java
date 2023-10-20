@@ -23,9 +23,9 @@ public class ProposalController {
         return ResponseEntity.ok(proposal);
     }
 
-    @GetMapping(value = "all-proposal")
-    public ResponseEntity searchAllProposal(@PathVariable("id") Long id) {
-        var proposal = proposalFeign.searchAllProposal(id);
-        return ResponseEntity.ok(proposal);
+    @GetMapping
+    public ResponseEntity<List<Proposal>> searchAllProposal(){
+        List<Proposal> list = proposalFeign.searchAllProposal();
+        return ResponseEntity.ok(list);
     }
 }
