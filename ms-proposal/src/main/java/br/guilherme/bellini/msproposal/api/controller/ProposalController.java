@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/proposal")
@@ -36,6 +37,12 @@ public class ProposalController {
                 .map(mapper::toProposalResponse)
                 .map(proposalResponse -> ResponseEntity.status(HttpStatus.OK).body(proposalResponse))
                 .orElse(ResponseEntity.notFound().build());
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Proposal>> searchAllProposal(){
+    List<Proposal> proposal = service.searchAllProposal();
+    return ResponseEntity.ok(proposal);
     }
 
 }
