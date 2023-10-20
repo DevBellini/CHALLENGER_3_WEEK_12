@@ -23,7 +23,7 @@ public class VoteValidationService {
     private final EmployeesFeign employeesFeign;
     private final ProposalFeign proposalFeign;
     private final VoteRepository voteRepository;
-    
+
     public Erole validateVoto(String cpf) {
         Employees employeesResponse = employeesFeign.findByCpf(cpf);
         if (employeesFeign.findByCpf(cpf).getAge() >= 18) {

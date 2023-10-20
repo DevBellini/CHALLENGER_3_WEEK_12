@@ -6,6 +6,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.List;
+
 @FeignClient(value = "ms-proposal", path = "proposal")
 @Component
 public interface ProposalFeign {
